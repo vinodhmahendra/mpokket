@@ -1,6 +1,6 @@
 package com.simplilearn.model;
 
-public abstract class Account {
+public abstract class Account implements AccountOperations{
 
     protected double balance;
 
@@ -15,7 +15,7 @@ public abstract class Account {
         return balance;
     }
 
-    public abstract boolean withdraw(double amount) ;
+//    public abstract boolean withdraw(double amount) ;
 
-    public abstract boolean deposit(double amount );
+//    public abstract boolean deposit(double amount );
 }

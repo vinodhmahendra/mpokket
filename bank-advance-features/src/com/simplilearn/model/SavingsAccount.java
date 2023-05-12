@@ -1,6 +1,6 @@
 package com.simplilearn.model;
 
-public class SavingsAccount extends Account{
+public class SavingsAccount extends Account implements InterestEarning{
     private double interestRate;
 
     public SavingsAccount(double initBalance,double interestRate){
@@ -22,5 +22,10 @@ public class SavingsAccount extends Account{
         }else {
             return false;
         }
+    }
+
+    @Override
+    public void addInterest() {
+        balance = balance + balance * interestRate;
     }
 }
