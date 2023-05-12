@@ -7,4 +7,20 @@ public class SavingsAccount extends Account{
         super ( initBalance );
         this.interestRate = interestRate;
     }
+
+    @Override
+    public boolean deposit(double amount) {
+        balance = balance + amount;
+        return true;
+    }
+
+    @Override
+    public boolean withdraw(double amount) {
+        if ( amount <= balance ){
+            balance = balance - amount;
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

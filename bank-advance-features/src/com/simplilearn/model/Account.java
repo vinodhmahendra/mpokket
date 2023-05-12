@@ -1,6 +1,6 @@
 package com.simplilearn.model;
 
-public class Account {
+public abstract class Account {
 
     protected double balance;
 
@@ -15,18 +15,7 @@ public class Account {
         return balance;
     }
 
-    public boolean withdraw(double amount) {
-    if  ( amount <= balance ) {
-        balance = balance - amount;
-        return  true;
-    }else {
-//        System.out.println("insufficient balance");
-        return false;
-    }
-    }
-    public  boolean deposit(double amount ){
-        //update the balance
-        balance = balance + amount;
-        return true ;
-    }
+    public abstract boolean withdraw(double amount) ;
+
+    public abstract boolean deposit(double amount );
 }

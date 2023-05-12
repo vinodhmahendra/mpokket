@@ -29,4 +29,10 @@ public class CheckingAccount extends Account{
        }
        return  result;
     }
+
+    @Override
+    public boolean deposit(double amount) {
+        balance = balance + amount;
+        return true;
+    }
 }
