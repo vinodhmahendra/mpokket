@@ -26,6 +26,7 @@ public class CheckingAccount extends Account{
            }
        }else {
            balance -= amount;
+           addTransaction("withdraw",amount);
        }
        return  result;
     }
@@ -33,6 +34,7 @@ public class CheckingAccount extends Account{
     @Override
     public boolean deposit(double amount) {
         balance = balance + amount;
+        addTransaction("deposit",amount);
         return true;
     }
 }

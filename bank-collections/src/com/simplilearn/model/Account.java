@@ -1,9 +1,13 @@
 package com.simplilearn.model;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 public abstract class Account implements AccountOperations{
 
     protected double balance;
-
+    protected Set<Transaction> transactions = new HashSet<>();
 
 
     //constructor : name == class name
@@ -15,7 +19,16 @@ public abstract class Account implements AccountOperations{
         return balance;
     }
 
-//    public abstract boolean withdraw(double amount) ;
+    protected  void addTransaction (String type, double amount){
+        String transactionId  = UUID.randomUUID().toString();
+        transactions.add(new Transaction(transactionId,type,amount));
+    }
+
+    public Set<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    //    public abstract boolean withdraw(double amount) ;
 
 //    public abstract boolean deposit(double amount );
 }

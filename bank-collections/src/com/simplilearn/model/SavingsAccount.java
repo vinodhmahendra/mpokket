@@ -13,6 +13,7 @@ public class SavingsAccount extends Account implements InterestEarning{
     @Override
     public boolean deposit(double amount) {
         balance = balance + amount;
+        addTransaction("deposit",amount);
         return true;
     }
 
@@ -20,6 +21,7 @@ public class SavingsAccount extends Account implements InterestEarning{
     public boolean withdraw(double amount) throws InsufficientBalanceException {
         if ( amount <= balance ){
             balance = balance - amount;
+            addTransaction("withdraw",amount);
             return true;
         }else {
 //            return false; old code

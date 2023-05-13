@@ -1,12 +1,16 @@
 package com.simplilearn.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Customer {
 
     private String firstName;
     private String lastName;
 
-    private Account account;
+//    private Account account;
 
+    private Map<String,Account> accounts = new HashMap<>();
     public Customer (String f, String l) {
         firstName = f;
         lastName = l;
@@ -20,12 +24,12 @@ public class Customer {
         return lastName;
     }
 
-    public Account getAccount() {
-        return account;
+    public Account getAccount(String accountId)
+    {
+        return this.accounts.get(accountId);
     }
 
-    public void setAccount(Account account) { // polymorphic argument
-        //this keyword refer to current instance (object)
-        this.account = account;
-    }
+   public void addAccount(String accountId,Account account){
+        this.accounts.put(accountId,account);
+   }
 }
