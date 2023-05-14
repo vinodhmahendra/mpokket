@@ -21,6 +21,8 @@ public class InterThreadCommunication {
                 }
         );
 
+        System.out.println(t1.getState());
+
         Thread  t2 = new Thread(
                 ()-> {
                     synchronized (lock){
@@ -32,6 +34,7 @@ public class InterThreadCommunication {
         );
 
         t1.start();
+        System.out.println(t1.getState());
         t2.start();
 
         try {
@@ -40,5 +43,6 @@ public class InterThreadCommunication {
         }catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println(t1.getState());
     }
 }
