@@ -1,50 +1,56 @@
 package com.simplilearn.model;
 
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
-@Table(name = "customers")
+@Table(name ="customers")
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CUSTOMER_ID")
-    private Integer customerId;
-    @Column(name = "FIRSTNAME")
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name="first_name")
     private String firstName;
-    @Column(name = "LASTNAME")
+
+    @Column(name = "last_name")
     private String lastName;
 
-    public Customer(){
 
+
+    public Integer getId() {
+        return id;
     }
 
-    public Customer( String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    @OneToMany ( mappedBy = "customer" , cascade = CascadeType.ALL,orphanRemoval = true)
+    @MapKeyColumn(name = "account_key")
+    private Map<String,Account> accounts = new HashMap<>();
+    public Customer (String f, String l) {
+        firstName = f;
+        lastName = l;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public Account getAccount(String accountId)
+    {
+        return this.accounts.get(accountId);
     }
+
+   public void addAccount(String accountId,Account account){
+        this.accounts.put(accountId,account);
+   }
 }
