@@ -3,6 +3,7 @@ package com.simplilearn.model;
 import javax.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Entity
 @Table(name ="customers")
@@ -10,7 +11,7 @@ public class Customer {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "customer_id")
     private Integer id;
 
     @Column(name="first_name")
@@ -32,6 +33,11 @@ public class Customer {
     @OneToMany ( mappedBy = "customer" , cascade = CascadeType.ALL,orphanRemoval = true)
     @MapKeyColumn(name = "account_key")
     private Map<String,Account> accounts = new HashMap<>();
+
+    public Map<String, Account> getAccounts() {
+        return accounts;
+    }
+
     public Customer (String f, String l) {
         firstName = f;
         lastName = l;
@@ -51,6 +57,20 @@ public class Customer {
     }
 
    public void addAccount(String accountId,Account account){
+
         this.accounts.put(accountId,account);
    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer)) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(id, customer.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

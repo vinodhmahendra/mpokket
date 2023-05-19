@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -64,7 +65,20 @@ public abstract class Account implements AccountOperations{
         return transactions;
     }
 
-    //    public abstract boolean withdraw(double amount) ;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Account)) return false;
+        Account account = (Account) o;
+        return Objects.equals(ID, account.ID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID);
+    }
+
+//    public abstract boolean withdraw(double amount) ;
 
 //    public abstract boolean deposit(double amount );
 }
