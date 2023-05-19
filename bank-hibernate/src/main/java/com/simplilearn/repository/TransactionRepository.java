@@ -6,11 +6,11 @@ import com.simplilearn.model.Transaction;
 import java.sql.SQLException;
 
 public interface TransactionRepository {
-    void createTransaction(Transaction transaction) throws SQLException;
+    void createTransaction(Transaction transaction);
 
-    void updateTransaction(Transaction transaction) throws SQLException;
+    void updateTransaction(Transaction transaction) ;
 
-    void deleteTransaction(String transactionId) throws SQLException;
+    void deleteTransaction(String transactionId) ;
 
     Transaction getTransaction(String transactionId) throws SQLException;
 }

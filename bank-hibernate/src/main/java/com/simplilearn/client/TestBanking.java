@@ -27,20 +27,21 @@ public class TestBanking {
 
             Customer aCustomer = new Customer("Chushruth","Vinodh");
             SavingsAccount savingsAccount = new SavingsAccount(500,0.003);
+
+            accountRepository.createAccount(savingsAccount);
+
             CheckingAccount checkingAccount = new CheckingAccount(1000);
+            accountRepository.createAccount(checkingAccount);
+
             savingsAccount.setCustomer(aCustomer);
             checkingAccount.setCustomer(aCustomer);
 
+
             aCustomer.addAccount(savingsAccount.getID(),savingsAccount);
-//            aCustomer.addAccount(checkingAccount.getID(),checkingAccount);
+            aCustomer.addAccount(checkingAccount.getID(),checkingAccount);
+//
+            customerRepository.createCustomer(aCustomer);
 
-            Map<String,Account> map = aCustomer.getAccounts();
-
-            System.out.println(" this is map :" +map);
-
-//            customerRepository.createCustomer(aCustomer);
-//            accountRepository.createAccount(savingsAccount);
-//            accountRepository.createAccount(checkingAccount);
         }catch (Exception e) {
             e.printStackTrace();
         }finally {

@@ -32,9 +32,9 @@ public class Customer {
 
     @OneToMany ( mappedBy = "customer" , cascade = CascadeType.ALL,orphanRemoval = true)
     @MapKeyColumn(name = "account_key")
-    private Map<String,Account> accounts = new HashMap<>();
+    private Map<Integer,Account> accounts = new HashMap<>();
 
-    public Map<String, Account> getAccounts() {
+    public Map<Integer, Account> getAccounts() {
         return accounts;
     }
 
@@ -51,12 +51,12 @@ public class Customer {
         return lastName;
     }
 
-    public Account getAccount(String accountId)
+    public Account getAccount(Integer accountId)
     {
         return this.accounts.get(accountId);
     }
 
-   public void addAccount(String accountId,Account account){
+   public void addAccount(Integer accountId,Account account){
 
         this.accounts.put(accountId,account);
    }

@@ -15,16 +15,15 @@ import java.util.UUID;
 public abstract class Account implements AccountOperations{
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2" , strategy = "uuid2")
-    @Column (name = "id" , columnDefinition = "VARCHAR(255)")
-    private String ID;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name = "account_id")
+    private Integer ID;
 
-    public String getID() {
+    public Integer getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 
@@ -32,7 +31,7 @@ public abstract class Account implements AccountOperations{
     protected double balance;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id",insertable = false,updatable = false)
     private Customer customer;
 
     public Customer getCustomer() {
