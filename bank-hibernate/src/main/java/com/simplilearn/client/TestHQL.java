@@ -27,10 +27,18 @@ public class TestHQL {
 
         session = HiberanateUtil.getSessionFactory().openSession();
         tx = session.beginTransaction();
-        String hql = "FROM Customer";
+//        String hql = "FROM Customer";
+//        String hql = "FROM Customer C WHERE C.id = 1";
+//        String hql = "select C.fistName,C.lastName From Customer C WHERE C.id = :customerId";
+        String hql = "UPDATE Customer set firstName= :firstName WHERE id=:customerId";
         Query query = session.createQuery(hql);
-        List<Customer> results = query.getResultList();
-        results.forEach(c-> System.out.println(c.getFirstName()));
+        query.setParameter("firstName","Bhavya");
+        query.setParameter("customerId",1);
+
+        int result = query.executeUpdate();
+
+//        List<Customer> results = query.getResultList();
+//        results.forEach(c-> System.out.println(c.getFirstName()));
         tx.commit();
 
     }
