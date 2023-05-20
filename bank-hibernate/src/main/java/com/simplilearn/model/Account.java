@@ -1,7 +1,5 @@
 package com.simplilearn.model;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -43,7 +41,7 @@ public abstract class Account implements AccountOperations{
     }
 
     @OneToMany(mappedBy = "account" , cascade = CascadeType.ALL, orphanRemoval = true)
-    protected Set<Transaction> transactions = new HashSet<>();
+    protected Set<AccountTransaction> accountTransactions = new HashSet<>();
 
 
     //constructor : name == class name
@@ -57,11 +55,11 @@ public abstract class Account implements AccountOperations{
 
     protected  void addTransaction (String type, double amount){
         String transactionId  = UUID.randomUUID().toString();
-        transactions.add(new Transaction(transactionId,type,amount));
+        accountTransactions.add(new AccountTransaction(transactionId,type,amount));
     }
 
-    public Set<Transaction> getTransactions() {
-        return transactions;
+    public Set<AccountTransaction> getTransactions() {
+        return accountTransactions;
     }
 
     @Override

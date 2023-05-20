@@ -4,14 +4,15 @@ import com.simplilearn.model.Account;
 import com.simplilearn.model.CheckingAccount;
 import com.simplilearn.model.Customer;
 import com.simplilearn.model.SavingsAccount;
-import com.simplilearn.repository.AccountRepository;
-import com.simplilearn.repository.AccountRepositoryImpl;
-import com.simplilearn.repository.CustomerRepository;
-import com.simplilearn.repository.CustomerRepositoryImpl;
+import com.simplilearn.repository.*;
+import com.simplilearn.tasks.TransactionTask;
 import com.simplilearn.util.HiberanateUtil;
 import org.hibernate.Session;
 
 import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class TestBanking {
     public static void main(String[] args) {
@@ -22,7 +23,10 @@ public class TestBanking {
         AccountRepository accountRepository =
                 new AccountRepositoryImpl(session);
 
+        TransactionRepository transactionRepository =
+                new TransactionRepositoryImpl(session);
 
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
         try{
 
             Customer aCustomer = new Customer("Chushruth","Vinodh");
@@ -42,11 +46,19 @@ public class TestBanking {
 //
             customerRepository.createCustomer(aCustomer);
 
+            Runnable transactionTask  = new TransactionTask(savingsAccount,transactionRepository);
+
+            Thread thread = new Thread(transactionTask);
+            executorService.submit(transactionTask);
+            thread.join();
+
+
         }catch (Exception e) {
             e.printStackTrace();
         }finally {
-             session.close();
-             HiberanateUtil.shutDown();
+//             session.close();
+//             HiberanateUtil.shutDown();
+             executorService.shutdown();
         }
         }
     }

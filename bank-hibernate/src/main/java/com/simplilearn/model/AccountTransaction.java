@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "transactions")
-public class Transaction {
+public class AccountTransaction {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -39,7 +39,7 @@ public class Transaction {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Transaction that = (Transaction) o;
+        AccountTransaction that = (AccountTransaction) o;
         return Objects.equals(transactionId, that.transactionId);
     }
 
@@ -68,7 +68,7 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Transaction(String transactionId, String type, double amount) {
+    public AccountTransaction(String transactionId, String type, double amount) {
         this.transactionId = transactionId;
         this.type = type;
         this.amount = amount;

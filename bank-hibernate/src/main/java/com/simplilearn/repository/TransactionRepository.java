@@ -1,16 +1,13 @@
 package com.simplilearn.repository;
 
-import com.simplilearn.model.Account;
-import com.simplilearn.model.Transaction;
-
-import java.sql.SQLException;
+import com.simplilearn.model.AccountTransaction;
 
 public interface TransactionRepository {
-    void createTransaction(Transaction transaction);
+    void createTransaction(AccountTransaction accountTransaction);
 
-    void updateTransaction(Transaction transaction) ;
+    void updateTransaction(AccountTransaction accountTransaction) ;
 
     void deleteTransaction(String transactionId) ;
 
-    Transaction getTransaction(String transactionId) throws SQLException;
+    AccountTransaction getTransaction(String transactionId) ;
 }

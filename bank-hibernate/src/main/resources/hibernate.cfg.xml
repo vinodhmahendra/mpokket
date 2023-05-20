@@ -19,6 +19,6 @@
         <mapping class="com.simplilearn.model.Account"/>
         <mapping class="com.simplilearn.model.SavingsAccount"/>
         <mapping class="com.simplilearn.model.CheckingAccount"/>
-        <mapping class="com.simplilearn.model.Transaction"/>
+        <mapping class="com.simplilearn.model.AccountTransaction"/>
     </session-factory>
 </hibernate-configuration>
