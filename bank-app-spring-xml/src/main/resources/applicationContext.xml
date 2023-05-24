@@ -7,7 +7,7 @@
     <bean id="customerRepository" class="com.simplilearn.repository.CustomerRepositoryImpl">
     </bean>
 
-    <bean id="customerService" class="com.simplilearn.service.CustomerServiceImpl">
+    <bean id="customerService" class="com.simplilearn.service.CustomerServiceImpl" >
         <constructor-arg ref="customerRepository"/>
     </bean>
 

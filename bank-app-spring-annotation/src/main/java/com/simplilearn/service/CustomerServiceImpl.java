@@ -2,11 +2,13 @@ package com.simplilearn.service;
 
 import com.simplilearn.model.Customer;
 import com.simplilearn.repository.CustomerRepository;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
 
+@Service(value = "customerService")
 public class CustomerServiceImpl implements  CustomerService{
     private  CustomerRepository customerRepository;
 
