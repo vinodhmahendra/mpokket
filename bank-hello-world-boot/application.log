@@ -1,0 +1,22 @@
+2023-05-25 09:45:19.186  INFO 10356 --- [main] c.s.BankHelloWorldBootApplication        : Starting BankHelloWorldBootApplication using Java 1.8.0_252 on ip-172-31-30-213 with PID 10356 (/home/vinodhmahendrag/simplilearn-projects/bank-hello-world-boot/target/classes started by vinodhmahendrag in /home/vinodhmahendrag/simplilearn-projects/bank-hello-world-boot)
+2023-05-25 09:45:19.188 DEBUG 10356 --- [main] c.s.BankHelloWorldBootApplication        : Running with Spring Boot v2.7.12, Spring v5.3.27
+2023-05-25 09:45:19.188  INFO 10356 --- [main] c.s.BankHelloWorldBootApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-05-25 09:45:19.979 DEBUG 10356 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-05-25 09:45:20.031 DEBUG 10356 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-05-25 09:45:20.057 DEBUG 10356 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2023-05-25 09:45:20.063 DEBUG 10356 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-05-25 09:45:20.116  INFO 10356 --- [main] c.s.BankHelloWorldBootApplication        : Started BankHelloWorldBootApplication in 1.186 seconds (JVM running for 1.437)
+2023-05-25 09:45:25.357  INFO 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-25 09:45:25.358 DEBUG 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-05-25 09:45:25.358 DEBUG 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-05-25 09:45:25.358 DEBUG 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-05-25 09:45:25.359 DEBUG 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@51400da5
+2023-05-25 09:45:25.359 DEBUG 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@54fc599a
+2023-05-25 09:45:25.359 DEBUG 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-05-25 09:45:25.359  INFO 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-05-25 09:45:25.365 DEBUG 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/", parameters={}
+2023-05-25 09:45:25.369 DEBUG 10356 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.simplilearn.controller.WelcomeController#helloWorld()
+2023-05-25 09:45:25.374  WARN 10356 --- [http-nio-8080-exec-1] c.s.controller.WelcomeController         : this is warning message
+2023-05-25 09:45:25.383 DEBUG 10356 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-05-25 09:45:25.383 DEBUG 10356 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing ["Hello World!"]
+2023-05-25 09:45:25.389 DEBUG 10356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
