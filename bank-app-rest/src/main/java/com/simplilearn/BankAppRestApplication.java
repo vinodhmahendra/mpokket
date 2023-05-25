@@ -15,24 +15,7 @@ public class BankAppRestApplication {
 		ApplicationContext context =
 				SpringApplication.run(BankAppRestApplication.class, args);
 
-		//retrieve a bean from container
-		CustomerService customerService = context.getBean("customerService",CustomerService.class);
 
-
-//		CustomerService customerService1 =
-//				context.getBean("customerService",CustomerService.class);
-//		CustomerService customerService2 =
-//				context.getBean("customerService",CustomerService.class);
-
-		Customer newCustomer =
-				new Customer(5L, "Vrushali", "vrushali@gmail.com", "gold", LocalDate.of(1987, 7, 18));
-
-		customerService.addCustomer(newCustomer);
-
-		System.out.println("All Customers");
-		for (Customer customer : customerService.getAllCustomers()) {
-			System.out.println(customer.getEmail());
-		}
 	}
 
 }

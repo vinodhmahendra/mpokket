@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
+import java.util.Optional;
 
 @Service(value = "customerService")
 //@Scope(value = "session")
@@ -44,5 +45,8 @@ public class CustomerServiceImpl implements  CustomerService{
         return customerRepository.getCustomerCount();
     }
 
-
+    @Override
+    public Optional<Customer> getCustomerById(Long id) {
+        return customerRepository.getCustomerById(id);
+    }
 }

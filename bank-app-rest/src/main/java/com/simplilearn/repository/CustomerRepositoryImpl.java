@@ -58,4 +58,12 @@ public class CustomerRepositoryImpl implements  CustomerRepository {
         }
         return false;
     }
+
+
+    @Override
+    public Optional<Customer> getCustomerById(Long id) {
+        return customers.stream()
+                .filter(customer -> customer.getId().equals(id))
+                .findFirst();
+    }
 }

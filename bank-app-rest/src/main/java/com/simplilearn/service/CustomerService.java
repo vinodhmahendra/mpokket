@@ -3,6 +3,7 @@ package com.simplilearn.service;
 import com.simplilearn.model.Customer;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CustomerService {
 
@@ -14,4 +15,6 @@ public interface CustomerService {
 
     long getCustomerCount();
     boolean deleteCustomer(Long id);
+
+    Optional<Customer> getCustomerById(Long id);
 }

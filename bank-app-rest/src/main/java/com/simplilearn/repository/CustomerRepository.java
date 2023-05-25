@@ -3,6 +3,7 @@ package com.simplilearn.repository;
 import com.simplilearn.model.Customer;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CustomerRepository {
 
@@ -13,4 +14,6 @@ public interface CustomerRepository {
 
     long getCustomerCount();
     boolean deleteCustomer(Long id);
+
+    Optional<Customer> getCustomerById(Long id);
 }
