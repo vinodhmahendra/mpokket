@@ -1,5 +1,6 @@
 package com.simplilearn.service;
 
+import com.simplilearn.exception.CustomerNotFoundException;
 import com.simplilearn.model.Customer;
 import com.simplilearn.repository.CustomerRepository;
 import org.springframework.context.annotation.Scope;
@@ -46,7 +47,7 @@ public class CustomerServiceImpl implements  CustomerService{
     }
 
     @Override
-    public Optional<Customer> getCustomerById(Long id) {
-        return customerRepository.getCustomerById(id);
+    public Customer getCustomerById(Long id) {
+        return customerRepository.getCustomerById(id).orElseThrow(()-> new CustomerNotFoundException(id));
     }
 }

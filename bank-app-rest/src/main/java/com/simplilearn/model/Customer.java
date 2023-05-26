@@ -1,13 +1,25 @@
 package com.simplilearn.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class Customer {
 
     private Long id;
+    @NotEmpty(message = "Name must not be empty")
+    @Size(min = 2,max = 30, message = "Name must be between 2 and 30 characters")
     private String name;
+
+    @NotEmpty(message = "Email must not be empty")
+    @Email(message = "Email should be valid")
     private String email;
+    @NotEmpty(message = "Membership Status must not be empty")
     private String membershipStatus;
+
+    @Past(message = "Date of birth should be in the past")
     private LocalDate dateOfBirth;
 
     //Default Constructor

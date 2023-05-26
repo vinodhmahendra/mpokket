@@ -16,5 +16,5 @@ public interface CustomerService {
     long getCustomerCount();
     boolean deleteCustomer(Long id);
 
-    Optional<Customer> getCustomerById(Long id);
+    Customer getCustomerById(Long id);
 }

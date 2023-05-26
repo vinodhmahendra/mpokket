@@ -3,10 +3,12 @@ package com.simplilearn.resource;
 import com.simplilearn.model.Customer;
 import com.simplilearn.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import javax.xml.ws.Response;
 import java.net.URI;
 import java.util.List;
@@ -30,18 +32,15 @@ public class CustomerResource {
     }
 
     @GetMapping("/customers/{customerId}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Long customerId) {
-        Optional<Customer> customer = customerService.getCustomerById(customerId);
-        if (customer.isPresent()) {
-            return ResponseEntity.ok(customer.get());
-        } else {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<?> getCustomerById(@PathVariable Long customerId) {
+        Customer customerOptional = customerService.getCustomerById(customerId);
+        return new ResponseEntity<>(customerOptional, HttpStatus.OK);
         }
-    }
+
 
 
     @PostMapping("/customers")
-    public ResponseEntity<Void> createCustomer(@RequestBody Customer theCustomer) {
+    public ResponseEntity<Void> createCustomer(@Valid @RequestBody Customer theCustomer) {
         customerService.addCustomer(theCustomer);
         // create a location
         URI location =
@@ -54,6 +53,40 @@ public class CustomerResource {
         return  ResponseEntity.created(location).build();
     }
 
-    // DELETE and UPDATE
+//    @PutMapping("/customers/{id}")
+//    public ResponseEntity<Customer> updateCustomer(@PathVariable  Long id,@RequestBody Customer customerDetails){
+//        Optional<Customer> customerOptional
+//                = customerService.getCustomerById(id);
+//
+//        if (!customerOptional.isPresent()){
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        Customer customer = customerOptional.get();
+//        customer.setName(customerDetails.getName());
+//        customer.setEmail(customerDetails.getEmail());
+//        customer.setMembershipStatus(customerDetails.getMembershipStatus());
+//        customer.setDateOfBirth(customerDetails.getDateOfBirth());
+//
+//        customerService.updateCustomer(customer);
+//
+////        return ResponseEntity.ok(customer);
+//        return ResponseEntity.noContent().build();//204
+//    }
+//
+//    @DeleteMapping("/customers/{id}")
+//    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id){
+//        Optional<Customer> customerOptional =
+//                customerService.getCustomerById(id);
+//        if ( !customerOptional.isPresent()){
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        customerService.deleteCustomer(id);
+//
+//        return ResponseEntity.noContent().build();
+//
+//    }
+
 }
 
